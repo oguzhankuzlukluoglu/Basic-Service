@@ -1,0 +1,6 @@
+/service1/config/db.go
+/service2/config/db.go
+/service3/config/db.go
+/service1/.env
+/service2/.env
+/service3/.env
