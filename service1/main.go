@@ -1,29 +1,23 @@
 package main
 
 import (
-	"fmt"
-	"log"
-	"os"
+	"net/http"
 
-	"github.com/joho/godotenv"
-	"github.com/oguzhankuzlukluoglu/service1/config"
+	"github.com/gin-gonic/gin"
+	"github.com/oguzhankuzlukluoglu/Basic-Service/service1/config"
+	"github.com/oguzhankuzlukluoglu/Basic-Service/service1/routes"
 )
 
 func main() {
-	// .env dosyasını yükle
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Error loading .env file")
-	}
+	config.ConnectDB()
 
-	// DATABASE_URL değişkenini al
-	databaseURL := os.Getenv("DATABASE_URL")
+	r := gin.Default()
 
-	// Veritabanı bağlantısını kur
-	db, err := config.ConnectToDB(databaseURL)
-	if err != nil {
-		log.Fatalf("Veritabanı bağlantısı başarısız: %v", err)
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "hello"})
+	})
+	routes.Router(r)
+	if err := r.Run(":8081"); err != nil {
+		panic("Server failed to start")
 	}
-	defer db.Close()
-	fmt.Println("Veritabanına başarıyla bağlandım!")
 }
