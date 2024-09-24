@@ -5,7 +5,6 @@ import (
 	"github.com/oguzhankuzlukluoglu/Basic-Service/service1/controllers"
 )
 
-// Router fonksiyonu, API rotalarını ayarlar
 func Router(app *gin.Engine) {
 	r := app.Group("/myapi/v1")
 
