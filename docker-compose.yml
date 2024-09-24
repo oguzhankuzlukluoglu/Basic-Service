@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: my-postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  
+  service1:
+    build:
+      context: ./service1
+      dockerfile: Dockerfile
+    container_name: service1-container
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@postgres/mydb?sslmode=disable
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+
+  service2:
+    build:
+      context: ./service2
+      dockerfile: Dockerfile
+    container_name: service2-container
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@postgres/mydb?sslmode=disable
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+
+  service3:
+    build:
+      context: ./service3
+      dockerfile: Dockerfile
+    container_name: service3-container
+    environment:
+      DATABASE_URL: postgres://myuser:mypassword@postgres/mydb?sslmode=disable
+    ports:
+      - "8083:8083"
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
