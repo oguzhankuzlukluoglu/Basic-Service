@@ -18,4 +18,4 @@ RUN go build -o main
 CMD ["./main"]
 
 # Portu açıyoruz (servisin portunu belirtiyoruz)
-EXPOSE 8081
+EXPOSE 8082
