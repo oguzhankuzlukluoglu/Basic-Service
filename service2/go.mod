@@ -1,3 +1,3 @@
-module github.com/oguzhankuzlukluoglu/xxx-service
+module github.com/oguzhankuzlukluoglu/service2
 
 go 1.22.1
