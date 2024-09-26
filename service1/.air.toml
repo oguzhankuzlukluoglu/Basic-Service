@@ -1,0 +1,19 @@
+# .air.toml
+
+# You can customize the settings as per your requirement
+root = "."
+tmp_dir = "tmp" # temporary directory
+
+[color]
+main = "cyan" 
+watch = "yellow" 
+log = "white" 
+exit = "red"
+
+[build]
+  cmd = "go build -o ./tmp/my-go-app ./cmd/main.go" # Uygulamayı oluştur
+  bin = "./tmp/my-go-app" # Çalıştırılacak ikili dosya
+
+[watch]
+  include = ["*.go"] # Hangi dosyaların izlendiği
+  exclude = ["tmp/**"] # İzlemeyecek dosyalar
