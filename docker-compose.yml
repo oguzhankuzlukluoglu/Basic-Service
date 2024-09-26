@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   postgres:
     image: postgres:15
@@ -17,7 +19,11 @@ services:
       dockerfile: Dockerfile
     container_name: service1-container
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
     ports:
       - "8081:8081"
     depends_on:
@@ -29,7 +35,11 @@ services:
       dockerfile: Dockerfile
     container_name: service2-container
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
     ports:
       - "8082:8082"
     depends_on:
@@ -41,7 +51,11 @@ services:
       dockerfile: Dockerfile
     container_name: service3-container
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
     ports:
       - "8083:8083"
     depends_on:
