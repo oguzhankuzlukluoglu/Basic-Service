@@ -31,3 +31,7 @@ func CreateOrder(c *gin.Context) {
 
 	c.JSON(http.StatusCreated, newOrder)
 }
+func GetMessage(c *gin.Context) {
+	message := "hadi"
+	c.JSON(200, message)
+}
